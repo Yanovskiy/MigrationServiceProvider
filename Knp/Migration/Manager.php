@@ -2,7 +2,7 @@
 
 namespace Knp\Migration;
 
-use Silex\Application;
+use Pimple\Container;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Finder\Finder;
@@ -23,7 +23,7 @@ class Manager
 
     private $migrationsTableName = 'schema_version';
 
-    public function __construct(Connection $connection, Application $application, Finder $finder)
+    public function __construct(Connection $connection, Container $application, Finder $finder)
     {
         $this->schema      = $connection->getSchemaManager()->createSchema();
         $this->toSchema    = clone($this->schema);
